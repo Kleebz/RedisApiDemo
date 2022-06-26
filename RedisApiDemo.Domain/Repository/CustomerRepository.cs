@@ -27,6 +27,7 @@ namespace RedisApiDemo.Domain.Repository
         public async Task<IEnumerable<Customer>> GetCustomersAsync() => await CacheHelper.GetStringAsync("customers", _cache, TimeSpan.FromMinutes(20),
                 async () =>
                 {
+                    await Task.Delay(5000);
                     return await _context.Customers.ToListAsync();
                 });
 
