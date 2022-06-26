@@ -33,6 +33,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+//Global options for Distributed cache
 //app.Lifetime.ApplicationStarted.Register(() =>
 //{
 //    var currentTimeUTC = DateTime.UtcNow.ToString();

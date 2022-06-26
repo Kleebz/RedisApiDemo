@@ -24,7 +24,7 @@ namespace RedisApiDemo.Domain.Helpers
             }
             else
             {
-                DistributedCacheEntryOptions options = new DistributedCacheEntryOptions()//https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.caching.distributed.distributedcacheentryoptions?view=dotnet-plat-ext-6.0
+                DistributedCacheEntryOptions options = new DistributedCacheEntryOptions()//more options: https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.caching.distributed.distributedcacheentryoptions?view=dotnet-plat-ext-6.0
                 {
                     AbsoluteExpirationRelativeToNow = expiration
                 };
