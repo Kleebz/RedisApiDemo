@@ -1,3 +1,5 @@
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.StackExchangeRedis;
 using RedisApiDemo.Api.Endpoints;
@@ -11,7 +13,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddTransient<RedisDemoDbContext>();
+
+builder.Services.AddDbContext<RedisDemoDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration["Sql:ConnectionString"]);
+});
+
 builder.Services.AddTransient<ICustomerRepository, CustomerRepository>();
 
 builder.Services.AddStackExchangeRedisCache(options =>
